@@ -6,7 +6,7 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:59:23 by cvine             #+#    #+#             */
-/*   Updated: 2022/01/22 11:50:59 by cvine            ###   ########.fr       */
+/*   Updated: 2022/04/19 22:41:15 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@ void	pipex(int infile, int outfile, char **argv, char **envp)
 	if (pipe(fd) < 0)
 		pipe_error();
 	pid = fork();
-	check_id(pid);
+	check_pid(pid);
 	if (!pid)
 	{
 		child(fd, infile, outfile, pid);
-		execve(find_path(envp, argv[2]), get_cmd(argv[2]), envp);
+		execve(cmd_path(envp, argv[2]), get_cmd(argv[2]), envp);
 	}
 	else
 	{
 		parent(fd, infile, outfile, pid);
-		execve(find_path(envp, argv[3]), get_cmd(argv[3]), envp);
+		execve(cmd_path(envp, argv[3]), get_cmd(argv[3]), envp);
 	}
 	exit (1);
 }

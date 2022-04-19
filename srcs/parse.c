@@ -6,7 +6,7 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:39:13 by cvine             #+#    #+#             */
-/*   Updated: 2022/01/22 11:55:31 by cvine            ###   ########.fr       */
+/*   Updated: 2022/04/19 23:06:38 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,27 @@ char	**get_cmd(char *argv)
 	return (cmd);
 }
 
-char	*get_paths(char **envp)
+char	*get_all_paths(char **envp)
 {
 	while (ft_strncmp(*envp, "PATH=", 5) && *envp)
 		(*envp)++;
 	return (*envp + 5);
 }
 
-char	*find_path(char **envp, char *argv)
+char	*cmd_path(char **envp, char *argv)
 {
-	char	**path_lst;
-	char	*tmp;
+	char	**all_paths;
+	char	*path;
 
-	path_lst = ft_split(get_paths(envp), ':');
-	while (*path_lst)
+	all_paths = ft_split(get_all_paths(envp), ':');
+	while (*all_paths)
 	{
-		tmp = ft_strjoin(*path_lst, "/");
-		tmp = ft_strjoin(tmp, *get_cmd(argv));
-		if (!access(tmp, F_OK | X_OK))
-			return (tmp);
-		free(tmp);
-		path_lst++;
+		path = ft_strjoin(*all_paths, "/");
+		path = ft_strjoin(path, *get_cmd(argv));
+		if (!access(path, F_OK | X_OK))
+			return (path);
+		free(path);
+		all_paths++;
 	}
 	cmd_error(argv);
 	return (NULL);

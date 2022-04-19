@@ -12,21 +12,16 @@
 
 #include "../includes/pipex.h"
 
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
 void	ft_putendl_fd(char *s, int fd)
 {
 	if (!s)
 		return ;
 	while (*s)
 	{
-		ft_putchar_fd(*s, fd);
+		write(fd, s, 1);
 		s++;
 	}
-	ft_putchar_fd('\n', fd);
+	write(fd, s, 1);
 }
 
 void	ft_putstr_fd(char *s, int fd)
@@ -35,7 +30,7 @@ void	ft_putstr_fd(char *s, int fd)
 		return ;
 	while (*s)
 	{
-		ft_putchar_fd(*s, fd);
+		write(fd, s, 1);
 		s++;
 	}
 }

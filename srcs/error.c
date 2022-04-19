@@ -6,7 +6,7 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 20:51:02 by cvine             #+#    #+#             */
-/*   Updated: 2022/01/22 11:57:51 by cvine            ###   ########.fr       */
+/*   Updated: 2022/04/19 22:22:35 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	pipe_error(void)
 	exit(1);
 }
 
-void	check_id(int id)
+void	check_pid(int id)
 {
 	if (id < 0)
 	{
