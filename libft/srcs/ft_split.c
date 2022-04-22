@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 13:23:04 by cvine             #+#    #+#             */
-/*   Updated: 2022/01/19 12:57:19 by cvine            ###   ########.fr       */
+/*   Created: 2021/10/14 17:03:33 by cvine             #+#    #+#             */
+/*   Updated: 2021/10/20 19:43:51 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include "libft.h"
 
 static size_t	count_words(char const *s, char c)
 {

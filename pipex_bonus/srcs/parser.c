@@ -6,11 +6,11 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:39:13 by cvine             #+#    #+#             */
-/*   Updated: 2022/04/19 23:06:38 by cvine            ###   ########.fr       */
+/*   Updated: 2022/04/20 20:03:38 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include "pipex.h"
 
 char	**get_cmd(char *argv)
 {

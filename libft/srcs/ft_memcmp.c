@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_error.c                                      :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 12:08:39 by cvine             #+#    #+#             */
-/*   Updated: 2022/01/20 18:09:28 by cvine            ###   ########.fr       */
+/*   Created: 2021/10/09 17:18:39 by cvine             #+#    #+#             */
+/*   Updated: 2021/10/20 17:29:23 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (!s)
-		return ;
-	while (*s)
-	{
-		write(fd, s, 1);
-		s++;
-	}
-	write(fd, s, 1);
-}
+	unsigned char	i;
+	unsigned char	*sp1;
+	unsigned char	*sp2;
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (!s)
-		return ;
-	while (*s)
+	i = 0;
+	sp1 = (unsigned char *)s1;
+	sp2 = (unsigned char *)s2;
+	if (!n)
+		return (0);
+	while (*sp1 == *sp2 && i < n - 1)
 	{
-		write(fd, s, 1);
-		s++;
+		sp1++;
+		sp2++;
+		i++;
 	}
+	return (*sp1 - *sp2);
 }
