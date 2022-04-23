@@ -55,7 +55,7 @@ Bonus part handles multiple pipes and supports « and » redirections and heredo
 
 Create an executable file:
 ``` sh
-$> cd pipex && make
+$> cd pipex_bonus && make
 ```
 For example:
 ``` sh
