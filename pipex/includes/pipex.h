@@ -6,7 +6,7 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 20:51:05 by cvine             #+#    #+#             */
-/*   Updated: 2022/04/22 17:30:31 by cvine            ###   ########.fr       */
+/*   Updated: 2022/04/24 18:05:02 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@
 # include <stdio.h>
 
 void	execute_cmd(int infile, int outfile, char **argv, char **envp);
-
 char	*cmd_path(char **envp, char *argv);
-char	**get_cmd(char *argv);
 
 void	pipe_error(void);
 void	check_fd(int fd, char *argv);

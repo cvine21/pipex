@@ -6,7 +6,7 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 20:51:02 by cvine             #+#    #+#             */
-/*   Updated: 2022/04/22 11:54:13 by cvine            ###   ########.fr       */
+/*   Updated: 2022/04/24 18:25:49 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@ void	dup_error(int pid)
 
 void	cmd_error(char *argv)
 {
+	char	**cmd;
+
+	cmd = ft_split(argv, ' ');
 	ft_putstr_fd("command not found: ", STDERR_FILENO);
-	ft_putendl_fd(*get_cmd(argv), STDERR_FILENO);
+	ft_putendl_fd(*cmd, STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 

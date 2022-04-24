@@ -6,7 +6,7 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 21:32:50 by cvine             #+#    #+#             */
-/*   Updated: 2022/04/22 11:53:01 by cvine            ###   ########.fr       */
+/*   Updated: 2022/04/24 18:31:22 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	child(int *fd, int pid, char *cmd, char **envp)
 	if (dup2(fd[1], STDOUT_FILENO) == -1)
 		dup_error(pid);
 	close(fd[1]);
-	execve(cmd_path(envp, cmd), get_cmd(cmd), envp);
+	execve(cmd_path(envp, cmd), ft_split(cmd, ' '), envp);
 	execve_error(cmd);
 }
 
@@ -56,11 +56,14 @@ void	create_pipes(char *cmd, char **envp)
 
 void	execute_cmd(int cmd_index, int argc, char **argv, char **envp, int outfile)
 {
+	char	**cmd;
+
+	cmd = ft_split(argv[argc - 2], ' ');
 	while (cmd_index < argc - 2)
 		create_pipes(argv[cmd_index++], envp);
 	if (dup2(outfile, STDOUT_FILENO) == -1)
 		dup_error(1);
 	close(outfile);
-	execve(cmd_path(envp, argv[argc - 2]), get_cmd(argv[argc - 2]), envp);
+	execve(cmd_path(envp, argv[argc - 2]), cmd, envp);
 	execve_error(argv[argc - 2]);
 }

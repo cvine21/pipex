@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:39:13 by cvine             #+#    #+#             */
-/*   Updated: 2022/04/20 20:03:38 by cvine            ###   ########.fr       */
+/*   Updated: 2022/04/24 18:20:46 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-char	**get_cmd(char *argv)
-{
-	char	**cmd;
-
-	cmd = ft_split(argv, ' ');
-	return (cmd);
-}
 
 char	*get_all_paths(char **envp)
 {
@@ -30,13 +22,15 @@ char	*get_all_paths(char **envp)
 char	*cmd_path(char **envp, char *argv)
 {
 	char	**all_paths;
+	char	**cmd;
 	char	*path;
 
 	all_paths = ft_split(get_all_paths(envp), ':');
+	cmd = ft_split(argv, ' ');
 	while (*all_paths)
 	{
 		path = ft_strjoin(*all_paths, "/");
-		path = ft_strjoin(path, *get_cmd(argv));
+		path = ft_strjoin(path, *cmd);
 		if (!access(path, F_OK | X_OK))
 			return (path);
 		free(path);

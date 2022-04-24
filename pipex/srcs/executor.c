@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:59:23 by cvine             #+#    #+#             */
-/*   Updated: 2022/04/22 17:31:40 by cvine            ###   ########.fr       */
+/*   Updated: 2022/04/24 18:09:57 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ void	execute_cmd(int infile, int outfile, char **argv, char **envp)
 	if (!pid)
 	{
 		child(fd, infile, outfile, pid);
-		execve(cmd_path(envp, argv[2]), get_cmd(argv[2]), envp);
+		execve(cmd_path(envp, argv[2]), ft_split(argv[2], ' '), envp);
 	}
 	else
 	{
 		parent(fd, infile, outfile, pid);
-		execve(cmd_path(envp, argv[3]), get_cmd(argv[3]), envp);
+		execve(cmd_path(envp, argv[3]), ft_split(argv[3], ' '), envp);
 	}
 	exit(EXIT_FAILURE);
 }
